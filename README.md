@@ -1,5 +1,10 @@
 # SleekShoppingCart
-A simple shopping cart made with HTML,CSS and Javascript
+This simple model of a shopping cart was made with the efforts to learn more about how JavaScript ES6 works.
+
+### Made using: 
+* HTML
+* CSS
+* Vanilla JavaScript
 
 
 [Demo](https://sleekshoppingcart.netlify.app)
