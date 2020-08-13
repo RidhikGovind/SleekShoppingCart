@@ -1,718 +1,702 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,500&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      src="https://kit.fontawesome.com/7d5b392920.js"
-      crossorigin="anonymous"
-    ></script>
 
-    <title>HappyShop site</title>
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@1,300&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,500&display=swap" rel="stylesheet" />
+  <script src="https://kit.fontawesome.com/7d5b392920.js" crossorigin="anonymous"></script>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      font-family: "Raleway", sans-serif;
-    }
+  <title>HappyShop site</title>
+</head>
 
-    body {
-      padding: 0em;
-      margin: 0;
-    }
+<style>
+  * {
+    box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+  }
 
-    .container-fluid {
-      background-color: #d4d4d4;
-      background-color: #040505;
-      color: #e3e5e4;
-    }
+  body {
+    padding: 0em;
+    margin: 0;
+  }
 
-    /* navigation part */
-    .nav {
-      position: relative;
-      border-bottom: 1px solid whitesmoke;
-    }
+  .container-fluid {
+    background-color: #d4d4d4;
+    background-color: #040505;
+    color: #e3e5e4;
+  }
 
-    /* .cart {
-        position: absolute;
-        top: -10px;
-        left: 20px;
-        font-size: 4em;
-        text-decoration: none;
-        font-weight: 500;
-        color: #e3e5e4;
+  /* navigation part */
+  .nav {
+    position: relative;
+    border-bottom: 1px solid whitesmoke;
+  }
 
 
-    } */
 
-    .cart {
-      position: absolute;
-      text-decoration: none;
-      font-size: 1em;
-      color: #e3e5e4;
-      top: 25px;
-      left: 60px;
-    }
+  .cart {
+    position: absolute;
+    text-decoration: none;
+    font-size: 1em;
+    color: #e3e5e4;
+    top: 25px;
+    left: 60px;
+  }
 
-    .search-bar {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-    }
+  .search-bar {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+  }
 
-    .search-bar input {
-      border-radius: 10px;
-      outline: none;
-      width: 100px;
-      height: 20px;
-      padding: 0.5em;
-    }
+  .search-bar input {
+    border-radius: 10px;
+    outline: none;
+    width: 100px;
+    height: 20px;
+    padding: 0.5em;
+  }
 
-    .brand {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+  .brand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .brand h3 span {
-      font-family: "Montserrat", sans-serif;
-    }
+  .brand h3 span {
+    font-family: "Montserrat", sans-serif;
+  }
 
-    /* Sliding Menu part */
-    .sliding-menu {
-      background-color: black;
-      width: 100vw;
-      height: 100vh;
-      position: fixed;
-      z-index: 30;
-      left: 0;
-      top: 0;
+  /* Sliding Menu part */
+  .sliding-menu {
+    background-color: black;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 30;
+    left: 0;
+    top: 0;
 
-      transform: translateX(-100vw);
-      transition: transform 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
-    }
+    transform: translateX(-100vw);
 
-    .sliding-menu .close {
-      font-size: 4em;
-    }
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
 
+  .sliding-menu .close {
+    font-size: 4em;
+  }
+
+  .sliding-menu a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.5em;
+    margin: 20px;
+    transition: 0.3s ease all;
+  }
+
+
+
+  .close:hover {
+    transition: 0.2s ease all;
+    transform: scale(1.5);
+    color: red;
+  }
+
+  @media (max-width: 500px) {
     .sliding-menu a {
-      color: white;
-      text-decoration: none;
-      font-size: 1.5em;
-      margin: 20px;
-      transition: 0.3s ease all;
+      font-size: 1em;
     }
+  }
 
-    /* .sliding-menu .item:hover {
-      transition: 0.5s ease all;
-      color: black;
-      transform: translateX(10px);
-      padding: 5px;
-      background-color: #90d5ec;
-      background-image: linear-gradient(315deg, #90d5ec 0%, #fc575e 74%);
-    } */
+  /* product display part */
+  .product-container {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    grid-auto-rows: auto;
+    grid-auto-flow: row;
+    transition: 0.4s ease all;
+    justify-content: space-around;
+    padding: 1em;
+    overflow: hidden;
+  }
 
-    .close:hover {
-      transition: 0.2s ease all;
-      transform: scale(1.5);
-      color: red;
-    }
-
-    @media (max-width: 500px) {
-      .sliding-menu a {
-        font-size: 1em;
-      }
-    }
-
-    /* product display part */
+  @media (max-width: 550px) {
     .product-container {
-      display: grid;
-      grid-template-columns: repeat(3, auto);
+      grid-template-columns: 1fr;
       grid-auto-rows: auto;
-      grid-auto-flow: row;
       transition: 0.4s ease all;
-      justify-content: space-around;
-      padding: 1em;
-      overflow: hidden;
     }
+  }
 
-    @media (max-width: 550px) {
-      .product-container {
-        grid-template-columns: 1fr;
-        grid-auto-rows: auto;
-        transition: 0.4s ease all;
-      }
+  @media (max-width: 730px) {
+    .product-container {
+      grid-template-columns: 1fr 1fr;
+      transition: 0.4s ease all;
     }
+  }
 
-    @media (max-width: 730px) {
-      .product-container {
-        grid-template-columns: 1fr 1fr;
-        transition: 0.4s ease all;
-      }
-    }
+  .product {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    position: relative;
+    max-width: 279px;
+    padding: 1em 1em 6em 1em;
+    border-right: 0.1px solid #cecdcd;
+    border-bottom: 0.1px solid #cecdcd;
+  }
 
-    .product {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      position: relative;
-      max-width: 279px;
-      padding: 1em 1em 6em 1em;
-      border-right: 0.1px solid #cecdcd;
-      border-bottom: 0.1px solid #cecdcd;
-    }
+  .product img {
+    border-radius: 2px;
+    max-width: 100%;
+    display: block;
+    height: auto;
+  }
 
-    .product img {
-      border-radius: 2px;
-      /* object-fit: cover; */
-      max-width: 100%;
-      display: block;
-      height: auto;
-    }
+  .product .overlay {
+    position: absolute;
+    text-align: center;
+    bottom: 0;
+    width: 40px;
+    border-radius: 4px;
+    opacity: 0;
+    font-weight: 800;
+    transform: scale(-1);
+    transition: 0.3s ease all;
+    background-color: #bdcad9;
+    background-image: linear-gradient(315deg, #bdcad9 0%, #e1dada 74%);
+    padding: 0;
+    margin: 0;
+  }
 
+  .product:hover .overlay {
+    opacity: 1;
+    bottom: 50%;
+  }
+
+  .product .overlay a {
+    text-decoration: none;
+    color: black;
+    font-size: 3em;
+    cursor: pointer;
+  }
+
+  @media (max-width: 520px) {
     .product .overlay {
-      position: absolute;
-      text-align: center;
-      bottom: 0;
-      width: 40px;
-      border-radius: 4px;
-      opacity: 0;
-
-      font-weight: 800;
-      transform: scale(-1);
-      transition: 0.3s ease all;
-      background-color: #bdcad9;
-      background-image: linear-gradient(315deg, #bdcad9 0%, #e1dada 74%);
-      padding: 0;
-      margin: 0;
-    }
-
-    .product:hover .overlay {
-      opacity: 1;
-      bottom: 50%;
+      width: 25px;
     }
 
     .product .overlay a {
-      text-decoration: none;
-      color: black;
-      font-size: 3em;
-      cursor: pointer;
+      font-size: 2em;
     }
+  }
 
-    @media (max-width: 520px) {
-      .product .overlay {
-        width: 25px;
-      }
+  .product img:hover {
+    transform: scale(1.04);
+    transition: 0.3s ease all;
+  }
 
-      .product .overlay a {
-        font-size: 2em;
-      }
-    }
+  .product-details {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    font-size: 1.2em;
+    width: 100%;
+    padding: 0em 1em;
+    justify-content: space-between;
+  }
 
-    .product img:hover {
-      transform: scale(1.04);
-      transition: 0.3s ease all;
-    }
-
+  @media (max-width: 360px) {
     .product-details {
-      position: absolute;
-      display: flex;
-      bottom: 0;
-      font-size: 1.2em;
-      width: 100%;
-      padding: 0em 1em;
-      justify-content: space-between;
+      font-size: 1em;
     }
+  }
 
-    @media (max-width: 360px) {
-      .product-details {
-        font-size: 1em;
-      }
-    }
 
-    footer {
-      font-size: 1.1em;
-      text-align: center;
-      border-top: 1px solid white;
-      padding: 1.1em 0;
-    }
 
-    footer a {
-      text-decoration: none;
-      color: #e3e5e4;
-    }
+  /* Cart part */
+  .main-cart {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: auto;
+    padding: 0.5em;
+  }
 
-    footer p {
-      margin: 14px 0px;
-      font-family: "Montserrat", sans-serif;
-    }
-
-    footer p .color {
-      color: red;
-    }
-
-    footer p .myname {
-      padding: 0.3em;
-
-      transition: 0.4s ease all;
-      border-radius: 10px;
-    }
-
-    footer p:hover .myname {
-      transition: 0.6s ease all;
-      background-color: #20bf55;
-      background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
-    }
-
-    footer .github {
-      border-radius: 16px;
-      padding-top: 0.7em;
-      transition: 0.3s ease all;
-    }
-
-    footer .github:hover {
-      box-shadow: 1px 2px 14px 6px rgba(66, 192, 251, 1);
-    }
-
-    /* Cart part */
+  @media (max-width: 680px) {
     .main-cart {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: auto;
+      padding: 0em 1em;
     }
+  }
 
-    @media (max-width: 680px) {
-      .main-cart {
-        padding: 0em 1em;
-      }
+  @media(max-width: 365px) {
+    .main-cart {
+      padding: 0.5em;
     }
+  }
 
-    .cart {
-      font-size: 1.5em;
-      margin-left: -30px;
-      margin-top: -5px;
+  .cart {
+    font-size: 1.5em;
+    margin-left: -30px;
+    margin-top: -5px;
 
-      cursor: pointer;
-    }
+    cursor: pointer;
+  }
 
-    .cart:hover {
-      transform: scale(1.3);
-      transition: 0.3s ease all;
-      /* color: #1dd1a1; */
-      color: white;
-    }
+  .cart:hover {
+    transform: scale(1.3);
+    transition: 0.3s ease all;
+    /* color: #1dd1a1; */
+    color: white;
+  }
 
+  .cart-quantity {
+    width: 4em;
+    padding: 0.5em 0.3em;
+    font-size: 1em;
+  }
+
+  @media (max-width: 360px) {
     .cart-quantity {
-      width: 4em;
-      padding: 0.5em 0.3em;
-      font-size: 1em;
+      width: 3em;
     }
+  }
 
-    @media (max-width: 360px) {
-      .cart-quantity {
-        width: 3em;
-      }
-    }
+  .cart-names,
+  .cart-quantities,
+  .cart-amounts,
+  .cart-remove,
+  .cart-images {
 
-    .cart-names,
-    .cart-quantities,
-    .cart-amounts,
-    .cart-remove,
-    .cart-images {
-      /* border: 1px solid white; */
-      display: grid;
-      justify-content: center;
-      align-items: center;
-    }
+    display: grid;
+    justify-content: center;
+    align-items: center;
+  }
 
-    .cart-field .empty-cart {
-      font-size: 1.5em;
-      color: sandybrown;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      align-self: center;
-    }
+  .cart-field .empty-cart {
+    font-size: 1.5em;
+    color: sandybrown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+  }
 
-    .cart-field img {
-      width: 100px;
-      height: 100px;
-    }
+  .cart-field img {
+    width: 100px;
+    height: 100px;
+  }
 
-    .cart-image img {
-      max-width: 100%;
-    }
+  .cart-image img {
+    max-width: 100%;
+  }
 
-    .remove-btn {
-      background-color: red;
-      color: white;
-      font-size: 1.2em;
-      padding: 0.1em 0.5em;
-      border-radius: 3px;
-      cursor: pointer;
-    }
+  .remove-btn {
+    background-color: red;
+    color: white;
+    font-size: 1.2em;
+    padding: 0.1em 0.5em;
+    border-radius: 3px;
+    cursor: pointer;
+  }
 
-    /* cart-total part */
-    .cart-total {
-      width: 100%;
-      background-color: red;
-      font-size: 1.6em;
-      padding: 10px 10px;
-      margin: 0;
-      display: flex;
-      justify-content: space-between;
-      margin: 16px 0;
-    }
+  /* cart-total part */
+  .cart-total {
+    width: 100%;
+    background-color: red;
+    font-size: 1.6em;
+    padding: 10px 10px;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0;
+  }
 
-    .cart-purchase {
-      display: flex;
-      justify-content: center;
-    }
+  .cart-purchase {
+    display: flex;
+    justify-content: center;
+  }
 
-    .cart-purchase button {
-      padding: 0.8em 1em;
-      font-size: 1em;
-      cursor: pointer;
-      background-color: dodgerblue;
-      color: rgb(0, 0, 0);
-      font-weight: 600;
-      border: none;
-      outline: none;
-      border-radius: 5px;
-      transition: 0.2s ease all;
-    }
+  .cart-purchase button {
+    padding: 0.8em 1em;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: dodgerblue;
+    color: rgb(0, 0, 0);
+    font-weight: 600;
+    border: none;
+    outline: none;
+    border-radius: 5px;
+    transition: 0.2s ease all;
+  }
 
-    .cart-purchase button:hover {
-      background-color: rgb(57, 206, 57);
-      transition: 0.3s ease all;
-    }
-  </style>
+  .cart-purchase button:hover {
+    background-color: rgb(57, 206, 57);
+    transition: 0.3s ease all;
+  }
 
-  <body>
-    <div class="container-fluid">
-      <div class="nav">
-        <i class="fas fa-shopping-cart cart"></i>
 
-        <div class="sliding-menu">
-          <a href="#" class="close">&times;</a>
 
-          <div class="cart-field">
-            <div class="empty-cart">
-              <p>Empty cart. Oops !</p>
-              <img
-                src="https://image.flaticon.com/icons/png/512/2038/2038854.png"
-              />
+  /* footer part */
+  footer {
+    font-size: 1.1em;
+    text-align: center;
+    border-top: 1px solid white;
+    padding: 1.1em 0;
+  }
+
+  footer a {
+    text-decoration: none;
+    color: #e3e5e4;
+  }
+
+  footer p {
+    margin: 14px 0px;
+    font-family: "Montserrat", sans-serif;
+  }
+
+  footer p .color {
+    color: red;
+  }
+
+  footer p .myname {
+    padding: 0.3em;
+
+    transition: 0.4s ease all;
+    border-radius: 10px;
+  }
+
+  footer p:hover .myname {
+    transition: 0.6s ease all;
+    background-color: #20bf55;
+    background-image: linear-gradient(315deg, #20bf55 0%, #01baef 74%);
+  }
+
+  footer .github {
+    border-radius: 16px;
+    padding-top: 0.7em;
+    transition: 0.3s ease all;
+  }
+
+  footer .github:hover {
+    box-shadow: 1px 2px 14px 6px rgba(66, 192, 251, 1);
+  }
+</style>
+
+<body>
+  <div class="container-fluid">
+    <div class="nav">
+      <i class="fas fa-shopping-cart cart"></i>
+
+      <div class="sliding-menu">
+        <a href="#" class="close">&times;</a>
+
+        <div class="cart-field">
+          <div class="empty-cart">
+            <p>Empty cart. Oops !</p>
+            <img src="https://image.flaticon.com/icons/png/512/2038/2038854.png" />
+          </div>
+
+          <!-- <div class="main-cart">
+
+            <div class="cart-images">
+                <img class="product-image" src="images/1.jpg" width="100px" height="120px">
+            </div>
+            <div class="cart-names">
+
+                <a href='#' class="cart-item">Clay Flower Pot</a>
             </div>
 
-            <!-- <div class="main-cart">
+            <div class="cart-quantities">
+                <input class="cart-quantity" type="number" value="1" min="1" max="10" required>
+            </div>
 
-                    <div class="cart-images">
-                        <img class="product-image" src="images/1.jpg" width="100px" height="120px">
-                    </div>
-                    <div class="cart-names">
+            <div class="cart-amounts">
+                <a href="#" class="cart-price">20</a>
 
-                        <a href='#' class="cart-item">Clay Flower Pot</a>
-                    </div>
+            </div>
 
-                    <div class="cart-quantities">
-                        <input class="cart-quantity" type="number" value="1" min="1" max="10" required>
-                    </div>
+            <div class="cart-remove">
 
-                    <div class="cart-amounts">
-                        <a href="#" class="cart-price">20</a>
+                <button class="remove-btn">Remove</button>
 
-                    </div>
-
-                    <div class="cart-remove">
-
-                        <button class="remove-btn">Remove</button>
-
-                    </div>
+            </div>
                     
                 </div> -->
-          </div>
-
-          <div class="cart-total">
-            <span class="cart-total-title">Final Amount</span>
-            <span class="cart-total-amt">$0</span>
-          </div>
-
-          <div class="cart-purchase">
-            <button>PURCHASE</button>
-          </div>
         </div>
 
-        <div class="brand">
-          <h3>Happy<span>Shop</span></h3>
+        <div class="cart-total">
+          <span class="cart-total-title">Final Amount</span>
+          <span class="cart-total-amt">$0</span>
         </div>
 
-        <span class="search-bar">
-          <input type="text" class="search" />
-        </span>
-      </div>
-
-      <div class="container">
-        <div class="product-container">
-          <div class="product">
-            <img class="product-image" src="images/1.jpg" />
-            <div class="overlay">
-              <a class="add">+</a>
-            </div>
-
-            <p class="product-details">
-              <span class="name">Clay Flower Pot</span>
-              <span class="price">$20</span>
-            </p>
-          </div>
-          <div class="product">
-            <img class="product-image" src="images/2.jpg" />
-            <div class="overlay">
-              <a class="add">+</a>
-            </div>
-            <p class="product-details">
-              <span class="name">Moutain Coffee Cup</span>
-              <span class="price">$10</span>
-            </p>
-          </div>
-          <div class="product">
-            <img class="product-image" src="images/8.jpg" />
-            <div class="overlay">
-              <a class="add">+</a>
-            </div>
-            <p class="product-details">
-              <span class="name">Leather Notepads</span>
-              <span class="price">$27</span>
-            </p>
-          </div>
-          <div class="product">
-            <img class="product-image" src="images/4.jpg" />
-            <div class="overlay">
-              <a class="add">+</a>
-            </div>
-            <p class="product-details">
-              <span class="name">Metal Water Bottle</span>
-              <span class="price">$35</span>
-            </p>
-          </div>
-          <div class="product">
-            <img class="product-image" src="images/5.jpg" />
-            <div class="overlay">
-              <a class="add">+</a>
-            </div>
-            <p class="product-details">
-              <span class="name">X'mas Theme Socks</span>
-              <span class="price">$15</span>
-            </p>
-          </div>
-          <div class="product">
-            <img class="product-image" src="images/6.jpg" />
-            <div class="overlay">
-              <a class="add">+</a>
-            </div>
-            <p class="product-details">
-              <span class="name">Modern Design Chair</span>
-              <span class="price">$50</span>
-            </p>
-          </div>
-          <div class="product">
-            <img class="product-image" src="images/7.jpg" />
-            <div class="overlay">
-              <a class="add">+</a>
-            </div>
-            <p class="product-details">
-              <span class="name">Wooden Toothbrush</span>
-              <span class="price">$25</span>
-            </p>
-          </div>
-          <div class="product">
-            <img class="product-image" src="images/3.jpg" />
-            <div class="overlay">
-              <a class="add">+</a>
-            </div>
-            <p class="product-details">
-              <span class="name">Matte Black Ballpen</span>
-              <span class="price">$7</span>
-            </p>
-          </div>
-          <div class="product">
-            <img class="product-image" src="images/9.jpg" />
-            <div class="overlay">
-              <a class="add">+</a>
-            </div>
-            <p class="product-details">
-              <span class="name">Navy Blue Backpack</span>
-              <span class="price">$40</span>
-            </p>
-          </div>
+        <div class="cart-purchase">
+          <button>PURCHASE</button>
         </div>
       </div>
 
-      <footer>
-        <a href="#">HappyShop Inc. </a>
-        <p>
-          Made with <span class="color">&#x2764;</span> by
-          <span class="myname">Ridhik Govind</span>
-        </p>
-        <a href="https://t.co/o9CLg6u0FC?amp=1" class="github"
-          ><i class="fab fa-github fa-2x"></i
-        ></a>
-      </footer>
+      <div class="brand">
+        <h3>Happy<span>Shop</span></h3>
+      </div>
+
+      <span class="search-bar">
+        <input type="text" class="search" />
+      </span>
     </div>
 
-    <script>
-      const quantityChange = document.getElementsByClassName("cart-quantity");
-      for (let i = 0; i < quantityChange.length; i++) {
-        const quantity = quantityChange[i];
-        quantity.addEventListener("change", quantityChanged);
+    <div class="container">
+      <div class="product-container">
+        <div class="product">
+          <img class="product-image" src="images/1.jpg" />
+          <div class="overlay">
+            <a class="add">+</a>
+          </div>
+
+          <p class="product-details">
+            <span class="name">Clay Flower Pot</span>
+            <span class="price">$20</span>
+          </p>
+        </div>
+        <div class="product">
+          <img class="product-image" src="images/2.jpg" />
+          <div class="overlay">
+            <a class="add">+</a>
+          </div>
+          <p class="product-details">
+            <span class="name">Moutain Coffee Cup</span>
+            <span class="price">$10</span>
+          </p>
+        </div>
+        <div class="product">
+          <img class="product-image" src="images/8.jpg" />
+          <div class="overlay">
+            <a class="add">+</a>
+          </div>
+          <p class="product-details">
+            <span class="name">Leather Notepads</span>
+            <span class="price">$27</span>
+          </p>
+        </div>
+        <div class="product">
+          <img class="product-image" src="images/4.jpg" />
+          <div class="overlay">
+            <a class="add">+</a>
+          </div>
+          <p class="product-details">
+            <span class="name">Metal Water Bottle</span>
+            <span class="price">$35</span>
+          </p>
+        </div>
+        <div class="product">
+          <img class="product-image" src="images/5.jpg" />
+          <div class="overlay">
+            <a class="add">+</a>
+          </div>
+          <p class="product-details">
+            <span class="name">X'mas Theme Socks</span>
+            <span class="price">$15</span>
+          </p>
+        </div>
+        <div class="product">
+          <img class="product-image" src="images/6.jpg" />
+          <div class="overlay">
+            <a class="add">+</a>
+          </div>
+          <p class="product-details">
+            <span class="name">Modern Design Chair</span>
+            <span class="price">$50</span>
+          </p>
+        </div>
+        <div class="product">
+          <img class="product-image" src="images/7.jpg" />
+          <div class="overlay">
+            <a class="add">+</a>
+          </div>
+          <p class="product-details">
+            <span class="name">Wooden Toothbrush</span>
+            <span class="price">$25</span>
+          </p>
+        </div>
+        <div class="product">
+          <img class="product-image" src="images/3.jpg" />
+          <div class="overlay">
+            <a class="add">+</a>
+          </div>
+          <p class="product-details">
+            <span class="name">Matte Black Ballpen</span>
+            <span class="price">$7</span>
+          </p>
+        </div>
+        <div class="product">
+          <img class="product-image" src="images/9.jpg" />
+          <div class="overlay">
+            <a class="add">+</a>
+          </div>
+          <p class="product-details">
+            <span class="name">Navy Blue Backpack</span>
+            <span class="price">$40</span>
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <a href="#">HappyShop Inc. </a>
+      <p>
+        Made with <span class="color">&#x2764;</span> by
+        <span class="myname">Ridhik Govind</span>
+      </p>
+      <a href="https://t.co/o9CLg6u0FC?amp=1" class="github"><i class="fab fa-github fa-2x"></i></a>
+    </footer>
+  </div>
+
+  <script>
+
+    //tracking changes in the cart quantity
+    const quantityChange = document.getElementsByClassName("cart-quantity");
+    for (let i = 0; i < quantityChange.length; i++) {
+      const quantity = quantityChange[i];
+      quantity.addEventListener("change", quantityChanged);
+    }
+
+    //function to check whether the quantity input is 'NotANumber' or making sure at 1 is the default cart quantity
+    function quantityChanged(e) {
+      const qtyInput = e.target.value;
+      if (isNaN(qtyInput) || qtyInput <= 0) {
+        qtyInput.value = 1;
+      }
+      updateNumber();
+    }
+
+    const nav = document.querySelector(".nav ");
+    const cartIcon = document.querySelector(".cart");
+    const slidingMenu = document.querySelector(".sliding-menu");
+    const closeBtn = document.querySelector(".close");
+
+    const cartPurchase = document.querySelector(".cart-purchase button");
+
+    //function to indicate successful purchase of cart items
+    function purchase() {
+      const cartItemField = document.getElementsByClassName("cart-field")[0];
+
+      if ((cartItemField.innerHTML = "")) {
+        alert("Please add a product");
+      } else {
+        alert("You have successfully purchased your products. Thank you !");
+        cartItemField.innerHTML = "";
       }
 
-      function quantityChanged(e) {
-        const qtyInput = e.target.value;
-        if (isNaN(qtyInput) || qtyInput <= 0) {
-          qtyInput.value = 1;
-        }
-        updateNumber();
-      }
+      updateNumber();
+    }
 
-      const nav = document.querySelector(".nav ");
-      const cartIcon = document.querySelector(".cart");
-      const slidingMenu = document.querySelector(".sliding-menu");
-      const closeBtn = document.querySelector(".close");
+    cartPurchase.addEventListener("click", purchase);
 
-      const cartPurchase = document.querySelector(".cart-purchase button");
+    //Sliding menu-icon
+    cartIcon.addEventListener("click", () => {
+      slidingMenu.style.transform = "translateX(0)";
+      slidingMenu.style.overflow = "scroll";
+      cartIcon.style.transform = "translateX(50px)";
+    });
 
-      function purchase() {
-        const cartItemField = document.getElementsByClassName("cart-field")[0];
+    //Sliding menu-close button
+    closeBtn.addEventListener("click", () => {
+      slidingMenu.style.transform = "translateX(-100vw)";
+      cartIcon.style.transform = "translateX(0px)";
+      closeBtn.style.transform = "translateX(1200px)";
+    });
 
-        if ((cartItemField.innerHTML = "")) {
-          alert("Please add a product");
-        } else {
-          alert("You have successfully purchased your products. Thank you !");
-          cartItemField.innerHTML = "";
-        }
+    const addBtn = document.querySelectorAll(".add");
 
-        updateNumber();
-      }
+    addBtn.forEach((btn) => btn.addEventListener("click", addToCart));
 
-      cartPurchase.addEventListener("click", purchase);
+    const cartField = document.getElementsByClassName("cart-field")[0];
 
-      //menu-icon
-      cartIcon.addEventListener("click", () => {
-        slidingMenu.style.transform = "translateX(0)";
-        slidingMenu.style.overflow = "scroll";
-        cartIcon.style.transform = "translateX(50px)";
-      });
-      //menu-close button
-      closeBtn.addEventListener("click", () => {
-        slidingMenu.style.transform = "translateX(-100vw)";
-        cartIcon.style.transform = "translateX(0px)";
-        closeBtn.style.transform = "translateX(1200px)";
-      });
 
-      const addBtn = document.querySelectorAll(".add");
+    //function to add the items to the cart
+    function addToCart(e) {
+      const product = e.target.parentElement.parentElement;
+      const title = product.querySelector(".product-details .name")
+        .textContent;
+      const price = product.querySelector(".product-details .price")
+        .textContent;
+      const src = product.querySelector(".product-image").src;
+      const mainCart = document.createElement("div");
 
-      addBtn.forEach((btn) => btn.addEventListener("click", addToCart));
-
-      const cartField = document.getElementsByClassName("cart-field")[0];
-      function addToCart(e) {
-        const emptyCart = document.getElementsByClassName("empty-cart")[0];
+      const emptyCart = document.querySelector('.empty-cart')
+      if (cartField.contains(emptyCart)) {
         emptyCart.remove();
-        const product = e.target.parentElement.parentElement;
-        const title = product.querySelector(".product-details .name")
-          .textContent;
-        const price = product.querySelector(".product-details .price")
-          .textContent;
-        const src = product.querySelector(".product-image").src;
-
+      } else {
         console.log(title, price, src);
-        const mainCart = document.createElement("div");
+
         mainCart.className = "main-cart";
 
         const cartContent = `
-                    <div class="cart-images">
-                        <img class="product-image" src="${src}" width="100px" height="120px">
-                    </div>
-                    <div class="cart-names">
+          <div class="cart-images">
+              <img class="product-image" src="${src}" width="50px" height="50px">
+          </div>
+          <div class="cart-names">
 
-                        <a href='#' class="cart-item">${title}</a>
-                    </div>
+              <a href='#' class="cart-item">${title}</a>
+          </div>
 
-                    <div class="cart-quantities">
-                        <input class="cart-quantity" type="number" value="1" min="1" max="10" required>
-                    </div>
+          <div class="cart-quantities">
+              <input class="cart-quantity" type="number" value="1" min="1" max="10" required>
+          </div>
 
-                    <div class="cart-amounts">
-                        <a href="#" class="cart-price">${price}</a>
+          <div class="cart-amounts">
+              <a href="#" class="cart-price">${price}</a>
 
-                    </div>
+          </div>
 
-                    <div class="cart-remove">
-                        <button class="remove-btn">X</button>
-                    </div>
-                    
-
-                    
-
-            `;
+          <div class="cart-remove">
+              <button class="remove-btn">X</button>
+          </div>
+        `;
         mainCart.innerHTML = cartContent;
 
         cartField.append(mainCart);
         alert(`${title} has been added to the cart.`);
 
         const removeBtn = slidingMenu.querySelectorAll(".remove-btn");
-        removeBtn.forEach((remove) =>
-          remove.addEventListener("click", removeItem)
-        );
+        removeBtn.forEach((remove) => remove.addEventListener("click", removeItem));
 
         updateNumber();
 
-        mainCart
-          .getElementsByClassName("cart-quantity")[0]
-          .addEventListener("change", quantityChanged);
+        mainCart.getElementsByClassName("cart-quantity")[0].addEventListener("change", quantityChanged);
       }
+    }
 
-      // cart item remove function
-      function removeItem(e) {
-        const toberemoved = e.target.parentElement.parentElement;
-        toberemoved.remove();
-        updateNumber();
+    // cart item remove function
+    function removeItem(e) {
+      const toberemoved = e.target.parentElement.parentElement;
+      toberemoved.remove();
+      updateNumber();
+    }
+
+    //function to update the cart total according to the cart quantity
+    function updateNumber() {
+      total = 0;
+      let cartRowContainer = document.getElementsByClassName("sliding-menu")[0];
+      let cartRow = cartRowContainer.getElementsByClassName("main-cart");
+      console.log(cartRow);
+      for (let i = 0; i < cartRow.length; i++) {
+        let Row = cartRow[i];
+        let priceElement = Row.getElementsByClassName("cart-price")[0];
+        let quantityElement = Row.getElementsByClassName("cart-quantity")[0];
+        let itemPrice = parseFloat(priceElement.innerText.replace("$", " "));
+
+        let itemQuantity = quantityElement.value;
+        console.log(itemPrice);
+        console.log(itemQuantity);
+        total += itemPrice * itemQuantity;
       }
+      let finalTotal = Math.round(total);
+      let TotalElement = (document.querySelector(".cart-total .cart-total-amt").innerText = "$" + finalTotal);
+      console.log(TotalElement);
+    }
+  </script>
+</body>
 
-      function updateNumber() {
-        total = 0;
-        let cartRowContainer = document.getElementsByClassName(
-          "sliding-menu"
-        )[0];
-        let cartRow = cartRowContainer.getElementsByClassName("main-cart");
-        console.log(cartRow);
-        for (let i = 0; i < cartRow.length; i++) {
-          let Row = cartRow[i];
-          let priceElement = Row.getElementsByClassName("cart-price")[0];
-          let quantityElement = Row.getElementsByClassName("cart-quantity")[0];
-          let itemPrice = parseFloat(priceElement.innerText.replace("$", " "));
-
-          let itemQuantity = quantityElement.value;
-          console.log(itemPrice);
-          console.log(itemQuantity);
-          total += itemPrice * itemQuantity;
-        }
-        let finalTotal = Math.round(total);
-        let TotalElement = (document.querySelector(
-          ".cart-total .cart-total-amt"
-        ).innerText = "$" + finalTotal);
-        console.log(TotalElement);
-      }
-    </script>
-  </body>
 </html>
