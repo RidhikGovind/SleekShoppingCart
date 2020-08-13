@@ -11,4 +11,4 @@ This simple model of a shopping cart was made with the efforts to learn more abo
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/c457f1ca-64ac-481b-81f0-18b59cdaece9/deploy-status)](https://app.netlify.com/sites/sleekshoppingcart/deploys)
 
-![Sample screenshot](/images/cartsnapshot.png)
+
